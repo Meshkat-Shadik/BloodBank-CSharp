@@ -11,6 +11,10 @@ namespace BloodBank
 {
     class Database
     {
+        MySqlConnection MyConn2 = new MySqlConnection("datasource=localhost;username=root;database=bloodbank;password=");
+        MySqlDataAdapter adapter = new MySqlDataAdapter();
+        MySqlCommand command = new MySqlCommand();
+        public DataSet ds = new DataSet();
         public static void register(string Name, string BloodGroup,string Location,string Age,string Phone,string Email,string Password, string tableName)
         {
                 try
@@ -31,7 +35,36 @@ namespace BloodBank
                     MessageBox.Show(ex.Message);
                 }
         }
+        /*public  String Login(String phone, String password, String table)
+        {
+            try
+            {
+                ds = new DataSet();
+                adapter = new MySqlDataAdapter("select * from `" + table + "` where Phone ='" + phone + "' and Password ='" + password + "';", MyConn2);
+                adapter.Fill(ds, table);
+                if (ds.Tables[table].Rows.Count > 0)
+                {
+                    string name = "";
+                    // return ds.Tables[table].Rows[0].;
+                    foreach (DataRow dr in ds.Tables[table].Rows)
+                    {
+                        name = dr["id"].ToString();
+                    }
+                    MyConn2.Close();
+                    return name;
+                }
+                else
+                {
+                    return null;
+                }
 
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        */
 
         public static string[] login(string tableName, string phone, string password)
         {
@@ -63,7 +96,7 @@ namespace BloodBank
                 else
                 {
                     //label4.Visible = true;
-                    MessageBox.Show("wrong Username/password \n ");
+                    MessageBox.Show("wrong Username/password inside \n ");
                 }
                 dr.Close();
                 con.Close();
@@ -81,15 +114,15 @@ namespace BloodBank
             string Query="";
             if(bg !="" && area !="")
             {
-                Query = "SELECT Name,BloodGroup,Location,Age,Phone,Email,Lattitude,Longitude FROM `donordata` WHERE((Location = '" + area + "'and BloodGroup = '" + bg + "')and Phone in (SELECT phone from donorstatus))";
+                Query = "SELECT Name,BloodGroup,Location,Age,Phone,Email,Lattitude,Longitude FROM `donordata` WHERE((Location = '" + area + "'and BloodGroup = '" + bg + "')and Phone in (SELECT Phone from donorstatus where donorstatus.Status like 'on due'))";
             }
             else if(bg !="" && area == "")
             {
-                Query = "SELECT Name,BloodGroup,Location,Age,Phone,Email,Lattitude,Longitude FROM `donordata` WHERE ((BloodGroup='" + bg + "')and Phone in (SELECT phone from donorstatus))";
+                Query = "SELECT Name,BloodGroup,Location,Age,Phone,Email,Lattitude,Longitude FROM `donordata` WHERE ((BloodGroup='" + bg + "')and Phone in (SELECT Phone from donorstatus where donorstatus.Status like 'on due'))";
             }
             else if(bg == "" && area != "")
             {
-                Query = "SELECT Name,BloodGroup,Location,Age,Phone,Email,Lattitude,Longitude FROM `donordata` WHERE ((Location='" + area + "')and Phone in (SELECT phone from donorstatus))";
+                Query = "SELECT Name,BloodGroup,Location,Age,Phone,Email,Lattitude,Longitude FROM `donordata` WHERE ((Location='" + area + "')and Phone in (SELECT Phone from donorstatus where donorstatus.Status like 'on due'))";
             }
             try
             {

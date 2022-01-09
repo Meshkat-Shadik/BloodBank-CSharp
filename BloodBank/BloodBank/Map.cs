@@ -16,6 +16,8 @@ using GMapMarker = GMap.NET.WindowsForms.GMapMarker;
 
 namespace BloodBank
 {
+
+    //23.81234828900245, 90.4128005462581
     public partial class Map : Form
     {
         double lattitude, longitude;

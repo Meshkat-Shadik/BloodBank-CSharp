@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BloodBank.exe" size="1131520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BloodBank.exe" size="1132032">
       <assemblyIdentity name="BloodBank" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>KrWESPeDsiPWxpj7WO20a1ooD81J9OQHpZtTfcD7/Ls=</dsig:DigestValue>
+        <dsig:DigestValue>8JZPml7t5FNFdLiL7vJq2qJt6VpsjRAMW0ZcBg1X42Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -134,6 +134,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>LAYio0GLM6iB7Yzp/UB7P8TyssxLkj7eqnZ4W1zSjw8=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleMaps.LocationServices.dll" size="16384">
+      <assemblyIdentity name="GoogleMaps.LocationServices" version="1.2.0.5" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>toVTiWRi/0ubTRQCJ47WoUd/exX3XW62zqKYP2Xxw/U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

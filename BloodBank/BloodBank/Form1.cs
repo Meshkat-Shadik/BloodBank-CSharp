@@ -63,20 +63,19 @@ namespace BloodBank
         {
             string[] acknowlegment = Database.login("recieverdata", textBox2.Text, textBox1.Text);
 
-            if (acknowlegment[0] != "")
-            {
-                Profile obj = new Profile(acknowlegment[1], acknowlegment[2]);
-                obj.Show();
-                this.Hide();
-            }
-            else
+            if (acknowlegment == null)
             {
                 label4.Visible = true;
                 MessageBox.Show("UserName/Password error!");
+
+            }
+            else if (acknowlegment[0] != "")
+            {
                 Profile obj = new Profile(acknowlegment[1], acknowlegment[2]);
                 obj.Show();
                 this.Hide();
             }
+           
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -90,7 +89,7 @@ namespace BloodBank
         {
             string[] acknowlegment = Database.login("donordata", textBox_phone.Text, textBox_Passs.Text);
 
-            if (acknowlegment[0] != "") 
+            if (acknowlegment[0] != " ") 
             {
                 donor_profile obj = new donor_profile(Convert.ToInt32(acknowlegment[0]));
                 obj.Show();
@@ -99,7 +98,7 @@ namespace BloodBank
             else
             {
                 label4.Visible = true;
-                MessageBox.Show("UserName/Password error!");
+                MessageBox.Show("UserName/Password error ui!");
             }
 
         }

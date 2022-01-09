@@ -28,7 +28,7 @@ namespace BloodBank
         string location;
         string name;
         string Phone;
-        double longitude=0.0, lattitude=0.0;
+        double longitude, lattitude;
         public Profile(String x, string y)
         {
             InitializeComponent();
@@ -127,8 +127,8 @@ Rangpur */
         {
          try
             {
-                var from = new MailAddress("sbloodbank2021@gmail.com");
-                var pass = "bank2021";
+                var from = new MailAddress("bankblood969@gmail.com");
+                var pass = "sagarakash";
                 var to = new MailAddress(emailadd);
                 string sub = "Blood Requested";
                 string body = "Hello," + name + ", I have come to know  through BloodBase app that you have due blood to be donated. I am urgently in need on blood of your type. Please contact me with the- \n"+"phone number " + Phone + "\n"+"Sincerely, " + ID;
@@ -185,8 +185,11 @@ Rangpur */
                     name = dataGridView1.SelectedRows[0].Cells["Name"].Value.ToString();
                     emailadd = dataGridView1.SelectedRows[0].Cells["Email"].Value.ToString();
                     location = dataGridView1.SelectedRows[0].Cells["Location"].Value.ToString();
+                  
+                   lattitude = double.Parse(dataGridView1.SelectedRows[0].Cells["Lattitude"].Value.ToString());
+                   longitude = double.Parse(dataGridView1.SelectedRows[0].Cells["Longitude"].Value.ToString());
 
-                  //  MessageBox.Show(name + emailadd + location);
+                    //  MessageBox.Show(name + emailadd + location);
 
                 }
                 catch (Exception ex)

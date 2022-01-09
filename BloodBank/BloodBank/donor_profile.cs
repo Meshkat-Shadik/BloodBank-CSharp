@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Device.Location;
+using GoogleMaps.LocationServices;
 
 namespace BloodBank
 {
@@ -16,6 +17,9 @@ namespace BloodBank
     {
         int Id;
         int ret=0;
+        private string latitude;
+        private string longitute;
+
         String name, location, bg, age, phone, email, pass,Query2;
         private GeoCoordinateWatcher Watcher = null;
         public donor_profile(int x)
@@ -23,15 +27,9 @@ namespace BloodBank
             InitializeComponent();
             Id = x;
             display();
-            // Create the watcher.
 
-            Watcher = new GeoCoordinateWatcher();
-            // Catch the StatusChanged event.
+          
 
-            Watcher.StatusChanged += Watcher_StatusChanged;
-            // Start the watcher.
-
-            Watcher.Start();
         }
 
         void display()
@@ -188,7 +186,16 @@ namespace BloodBank
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Watcher_StatusChanged(sender, (GeoPositionStatusChangedEventArgs)e);
+            //Watcher_StatusChanged(sender, (GeoPositionStatusChangedEventArgs)e);
+            // Create the watcher.
+
+            Watcher = new GeoCoordinateWatcher();
+            // Catch the StatusChanged event.
+
+            Watcher.StatusChanged += Watcher_StatusChanged;
+            // Start the watcher.
+
+            Watcher.Start();
         }
 
         private void Watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
@@ -199,11 +206,14 @@ namespace BloodBank
                 if (Watcher.Position.Location.IsUnknown)
                 {
                     textBox8.Text = "Cannot find location data";
+                    MessageBox.Show("Cannot find location data");
                 }
                 else
                 {
                     textBox8.Text = Watcher.Position.Location.Latitude.ToString();
                     textBox9.Text = Watcher.Position.Location.Longitude.ToString();
+
+                    MessageBox.Show(Watcher.Position.Location.Latitude.ToString());
                 }
             }
         }
